@@ -1,49 +1,13 @@
 import itertools, copy
 import numpy as np
 
-moons = np.array([[(-7, 17, -11), (0, 0, 0)], [(9, 12, 5), (0, 0, 0)], [(-9, 0, -4), (0, 0, 0)], [(4, 6, 0), (0, 0, 0)]])
-print(moons)
-# moons={
-#     'Io': {
-#         'x': -7,
-#         'y': 17,
-#         'z': -11,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     },
-#     'Europa': {
-#         'x': 9,
-#         'y': 12,
-#         'z': 5,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     },
-#     'Ganymede': {
-#         'x': -9,
-#         'y': 0,
-#         'z': -4,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     },
-#     'Callisto': {
-#         'x': 4,
-#         'y': 6,
-#         'z': 0,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     }
-# }
+#moons = np.array([[(-7, 17, -11), (0, 0, 0)], [(9, 12, 5), (0, 0, 0)], [(-9, 0, -4), (0, 0, 0)], [(4, 6, 0), (0, 0, 0)]])
+moons = np.array([[(-1, 0, 2), (0, 0, 0)], [(2, -10, -7), (0, 0, 0)], [(4, -8, 8), (0, 0, 0)], [(3, 5, -1), (0, 0, 0)]])
 
 original: np.array = copy.deepcopy(moons)
 
 def revolution() -> bool:
-    if moons is not original:
-        return False
-    return True
+    return True if np.array_equiv(moons, original) else False
 
 def simulate(steps: int, part: int, moons: np.array):
     i: int = 0
@@ -58,13 +22,11 @@ def simulate(steps: int, part: int, moons: np.array):
                 elif moon_0[0][c] > moon_1[0][c]:
                     moon_0[1][c] -= 1
             
-        # for moon in moons:
-        #     for c in np.arange(3):
-        #         moon[0][c] += moon[1][c]
-        
+        for moon in moons:
+            moon[0] = np.sum([moon[0], moon[1]], axis=0)
 
         i += 1
-        
+
         if revolution():
             break
     
@@ -86,4 +48,3 @@ print(f'Part One: {energy}')
 moons = copy.deepcopy(original)
 steps: int = simulate(0, 2, moons)
 print(f'Part Two: {steps}')
-print(moons)
