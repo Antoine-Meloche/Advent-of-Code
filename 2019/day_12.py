@@ -1,89 +1,64 @@
-import itertools, copy
-import numpy as np
+import re
+import math
 
-moons = np.array([[(-7, 17, -11), (0, 0, 0)], [(9, 12, 5), (0, 0, 0)], [(-9, 0, -4), (0, 0, 0)], [(4, 6, 0), (0, 0, 0)]])
-print(moons)
-# moons={
-#     'Io': {
-#         'x': -7,
-#         'y': 17,
-#         'z': -11,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     },
-#     'Europa': {
-#         'x': 9,
-#         'y': 12,
-#         'z': 5,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     },
-#     'Ganymede': {
-#         'x': -9,
-#         'y': 0,
-#         'z': -4,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     },
-#     'Callisto': {
-#         'x': 4,
-#         'y': 6,
-#         'z': 0,
-#         'vx': 0,
-#         'vy': 0,
-#         'vz': 0
-#     }
-# }
 
-original: np.array = copy.deepcopy(moons)
+def calculate_energy(moons: list) -> int: return sum([sum(map(abs, moon.pos)) * sum(map(abs, moon.vel)) for moon in moons])
 
-def revolution() -> bool:
-    if moons is not original:
-        return False
-    return True
 
-def simulate(steps: int, part: int, moons: np.array):
-    i: int = 0
+def set_moons():
+    global moons
+    moons = list(map(Moon, moons_coords))
 
-    permutations = list(itertools.permutations(moons, r=2))
+
+class Moon:
+    def __init__(self: object, coords: list) -> None:
+        self.pos: list = list(map(int, coords))
+        self.vel: list = [0] * 3
+
+
+with open('input', "r") as f:
+    moons_coords: list = [line.strip("\n<>") for line in f.readlines()]
+    moons_coords = [re.findall(r"x=(-?\d+), y=(-?\d+), z=(-?\d+)", moon_coords)[0] for moon_coords in moons_coords]
+
+def simulate(steps: int, part: int) -> None:
+    set_moons()
+    i = 0
 
     while (i < steps and part == 1) or part == 2:
-        for moon_0, moon_1 in permutations:
-            for c in np.arange(3):
-                if moon_0[0][c] < moon_1[0][c]:
-                    moon_0[1][c] += 1
-                elif moon_0[0][c] > moon_1[0][c]:
-                    moon_0[1][c] -= 1
-            
-        # for moon in moons:
-        #     for c in np.arange(3):
-        #         moon[0][c] += moon[1][c]
-        
+        for moon in moons:
+            for moon_1 in moons:
+                for d in range(3):
+                    if moon.pos[d] < moon_1.pos[d]:
+                        moon.vel[d] += 1
+                    elif moon.pos[d] > moon_1.pos[d]:
+                        moon.vel[d] += -1
 
-        i += 1
-        
-        if revolution():
+        for moon in moons:
+            for d in range(3):
+                moon.pos[d] += moon.vel[d]
+
+        if part == 1:
+            i += 1
+            continue
+
+        x = ((moons[0].pos[0], moons[0].vel[0]), (moons[1].pos[0], moons[1].vel[0]), (moons[2].pos[0], moons[2].vel[0]))
+        y = ((moons[0].pos[1], moons[0].vel[1]), (moons[1].pos[1], moons[1].vel[1]), (moons[2].pos[1], moons[2].vel[1]))
+        z = ((moons[0].pos[2], moons[0].vel[2]), (moons[1].pos[2], moons[1].vel[2]), (moons[2].pos[2], moons[2].vel[2]))
+
+
+        if x in xs and y in ys and z in zs:
             break
-    
-    if part == 2:
-        return i
 
+        xs.add(x)
+        ys.add(y)
+        zs.add(z)
 
-simulate(1000, 1, moons)
+simulate(1000, 1)
+print(f"12.1 Energy: {calculate_energy(moons)}")
 
-energy: int = 0
-for moon in moons:
-    pot: int = sum(map(abs, moon[0]))
-    kin: int = sum(map(abs, moon[1]))
-    
-    energy += np.multiply(pot, kin)
+xs, ys, zs = set(), set(), set()
 
-print(f'Part One: {energy}')
+simulate(0, 2)
+iterations = math.lcm(len(xs), math.lcm(len(ys), len(zs)))
 
-moons = copy.deepcopy(original)
-steps: int = simulate(0, 2, moons)
-print(f'Part Two: {steps}')
-print(moons)
+print(f"12.2 Iterations: {iterations}")
