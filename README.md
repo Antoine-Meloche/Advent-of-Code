@@ -23,3 +23,5 @@ This is my repository where I solve the daily challenges of [Advent Of Code](htt
 - Day 2 (Python)
 - Day 3 (Python)
 - Day 4 (Python)
+- Day 6 (Python)
+- Day 7 (Python)
