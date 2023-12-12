@@ -3,27 +3,39 @@
 This is my repository where I solve the daily challenges of [Advent Of Code](https://adventofcode.com).
 
 ## 2015
-- Day 2 (Python)
-- Day 3 (Python)
+| Day |     Lang     | Stars |
+|-----|--------------|-------|
+|  2  | Python       | \*\*  |
 
 ## 2019
-- Day 12 (Python)
+| Day |     Lang     | Stars |
+|-----|--------------|-------|
+| 12  | Python       | \*\*  |
 
 ## 2021
-- Day 6 (Python)
+| Day |     Lang     | Stars |
+|-----|--------------|-------|
+|  6  | Python       | \*    |
 
 ## 2022
-- Day 1 (Python)
-- Day 2 (Python)
-- Day 3 (Python)
-- Day 4 (Python, Python with ChatGPT)
+| Day |     Lang     | Stars |
+|-----|--------------|-------|
+|  1  | Python       | \*\*  |
+|  2  | Python       | \*\*  |
+|  3  | Python       | \*\*  |
+|  4  | Python       | \*\*  |
 
 ## 2023
-- Day 1 (Python, C)
-- Day 2 (Python)
-- Day 3 (Python)
-- Day 4 (Python)
-- Day 6 (Python, Rust)
-- Day 7 (Python)
-- Day 8 (Python)
-- Day 9 (Python)
+| Day |     Lang     | Stars |
+|-----|--------------|-------|
+|  1  | Python, C    | \*\*  |
+|  2  | Python       | \*\*  |
+|  3  | Python       | \*\*  |
+|  4  | Python       | \*\*  |
+|  5  | Python       | \*    |
+|  6  | Python, Rust | \*\*  |
+|  7  | Python       | \*\*  |
+|  8  | Python       | \*\*  |
+|  9  | Python       | \*\*  |
+|  10 | Python       | \*    |
+|  11 | Python       | \*\*  |
