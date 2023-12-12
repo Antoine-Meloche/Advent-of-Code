@@ -26,16 +26,17 @@ This is my repository where I solve the daily challenges of [Advent Of Code](htt
 |  4  | Python       | \*\*  |
 
 ## 2023
-| Day |     Lang     | Stars |
-|-----|--------------|-------|
-|  1  | Python, C    | \*\*  |
-|  2  | Python       | \*\*  |
-|  3  | Python       | \*\*  |
-|  4  | Python       | \*\*  |
-|  5  | Python       | \*    |
-|  6  | Python, Rust | \*\*  |
-|  7  | Python       | \*\*  |
-|  8  | Python       | \*\*  |
-|  9  | Python       | \*\*  |
-|  10 | Python       | \*    |
-|  11 | Python       | \*\*  |
+| Day |     Lang      | Stars |
+|-----|---------------|-------|
+|  1  | Python, C, Go | \*\*  |
+|  2  | Python        | \*\*  |
+|  3  | Python        | \*\*  |
+|  4  | Python        | \*\*  |
+|  5  | Python        | \*    |
+|  6  | Python, Rust  | \*\*  |
+|  7  | Python        | \*\*  |
+|  8  | Python        | \*\*  |
+|  9  | Python        | \*\*  |
+|  10 | Python        | \*    |
+|  11 | Python        | \*\*  |
+|  12 | Python        | \*    |
